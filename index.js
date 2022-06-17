@@ -16,9 +16,11 @@ The function should:
 */
 
 
-function createMenuItem(/*Your code here*/){
-  /*Your code here*/
+function createMenuItem(name, price, category){
+  return {name, price, category};
+
 }
+console.log(createMenuItem('tacos', 8, 'Lunch'));
 
 
 
@@ -31,7 +33,10 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
-
+function createNewMenuItem(name, price, category){
+  return {name, price, category};
+}
+console.log(createNewMenuItem( 'pizza', 5, 'lunch'));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -48,11 +53,18 @@ Using the burger object below do the following:
 
 
 const burger = {
-  name: "Burger", 
-  price: 18, 
-  category: "Lunch", 
-  
+name: "Burger", 
+price: 18, 
+category: "Lunch", 
+discount: function(person){
+if(person === 'teacher' || person ==='student'){
+return this.price - (this.price * 0.25)
+}else if(person === 'public'){
+return this.price - (this.price * 0.10);
 }
+} 
+}
+console.log(burger.discount('teacher'));
 
 
 
@@ -72,7 +84,7 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
-
+console.log(reviews[5].feedback);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 (not auto-tested): 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -80,7 +92,8 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
   1. Add this feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
   2. log the reviews array to the console to check your work
 */
-
+reviews.push({feedback: 'this place is chill with really cool people, great for getting work done on weekdays'});
+console.log(reviews);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -95,9 +108,11 @@ Use the addReview function below to do the following:
 */
 
 
-function addReview(/*Your Code Here */){
-  /*Your Code Here */
+function addReview(array, name, rating, feedback){
+  array.push({name:name, rating:rating, feedback:feedback });
+  return array;
 }
+addReview(reviews, 'Daniela', 5, 'Beautiful atmosphere and wonderful vegan options!')
 
 
 
@@ -112,9 +127,10 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(array, number) {
+  return `${array[number].name} gave the restaurant a ${array[number].rating} star review, and their feedback was: ${array[number].feedback}`
 }
+console.log(getReviewByIndex(reviews, 0));
 
   
 
@@ -131,9 +147,10 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(array) {
+  return `${array[array.length -1].name} gave the restaurant a ${array[array.length -1].rating} star review, and their feedback was: ${array[array.length -1].feedback}`;
 } 
+console.log(getLastReview(reviews));
 
 
 
@@ -153,9 +170,10 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
+ function getReviewByRating(array, rating) {
+    return array[rating].reviews;
   }
+  console.log(getReviewByIndex(reviews, 4));
 
   
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪💪   
